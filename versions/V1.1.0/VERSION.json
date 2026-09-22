@@ -1,0 +1,14 @@
+{
+  "name": "CASACAS LB",
+  "version": "1.1.0",
+  "label": "V1.1.0",
+  "status": "stable",
+  "description": "Catálogo estático funcional con menú lateral, carrusel de hero arrastrable, galería de tres vistas por producto, vista previa modal, carrito y pedidos por WhatsApp.",
+  "features": ["catalogo", "filtros", "busqueda", "galeria-productos", "preview-modal", "carrusel-hero", "menu-lateral", "carrito", "whatsapp", "contacto-local", "testimonios", "responsive"],
+  "backup": {
+    "snapshot": "versions/V1.1.0",
+    "archive": "CASACAS-LB-V1.1.0-respaldo.zip",
+    "gitTag": "V1.1.0"
+  },
+  "nextVersionExamples": {"minor": "1.2.0", "patch": "1.1.1", "major": "2.0.0"}
+}
