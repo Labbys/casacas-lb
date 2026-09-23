@@ -165,7 +165,6 @@ export default function PrototypeHome() {
           <a href="#personaliza" className="nav-item-btn">Personalizá</a>
           <a href="#local" className="nav-item-btn">Local & contacto</a>
           <a href="#opiniones" className="nav-item-btn">Opiniones</a>
-          <a href="#manifiesto" className="nav-item-btn">Nosotros</a>
         </nav>
 
         <div className="nav-actions-v0">
@@ -194,7 +193,6 @@ export default function PrototypeHome() {
           <a href="#personaliza" onClick={() => setMenuOpen(false)}>Personalizá</a>
           <a href="#opiniones" onClick={() => setMenuOpen(false)}>Opiniones</a>
           <a href="#local" onClick={() => setMenuOpen(false)}>Local & contacto</a>
-          <a href="#manifiesto" onClick={() => setMenuOpen(false)}>Nosotros</a>
         </nav>
         <a href="https://wa.me/5493735549290" target="_blank" rel="noopener" className="side-menu-wa">
           WhatsApp directo ↗
@@ -621,20 +619,7 @@ export default function PrototypeHome() {
         </div>
       </section>
 
-      {/* 9. MANIFIESTO DE MARCA, composición de una sola columna */}
-      <section id="manifiesto" style={{ background: "#252422", color: "#f4f0e8", padding: "100px 8vw", display: "grid", gridTemplateColumns: "1fr", gap: "50px", alignItems: "center" }}>
-        <div>
-          <p className="hero-eyebrow" style={{ color: "#aaa59d" }}>NO HACEMOS ROPA. HACEMOS SEÑALES.</p>
-          <h2 style={{ font: "400 clamp(50px, 6vw, 84px)/0.85 'Bebas Neue'", margin: "0 0 20px" }}>
-            Tu equipo.<br /><span style={{ color: "#ff2a1a" }}>Tu código.</span>
-          </h2>
-          <p style={{ color: "#beb6aa", fontSize: "14px", lineHeight: "1.8", maxWidth: "540px" }}>
-            Creemos en las prendas que tienen historia, que aguantan el uso y que representan el lugar de donde venís. Cada producto está pensado para durar y hablar por vos.
-          </p>
-        </div>
-      </section>
-
-      {/* 10. LOCAL & CONTACTO: MAPA INMEDIATAMENTE DEBAJO DEL ENLACE DE GOOGLE MAPS */}
+      {/* 9. LOCAL & CONTACTO: MAPA INMEDIATAMENTE DEBAJO DEL ENLACE DE GOOGLE MAPS */}
       <section id="local" className="local-section-v0">
         <div className="local-grid-v0">
           <div className="local-heading-v0">
