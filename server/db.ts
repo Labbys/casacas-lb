@@ -41,9 +41,17 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 
   values.lastSignedIn = user.lastSignedIn ?? new Date();
   updateSet.lastSignedIn = values.lastSignedIn;
-  if (user.role !== undefined || user.openId === ENV.ownerOpenId) {
-    values.role = user.role ?? "admin";
-    updateSet.role = values.role;
+
+  // El dueño del proyecto o el primer usuario registrado siempre se promueve a admin
+  const countUsers = await db.select({ count: sql<number>`count(*)` }).from(users);
+  const isFirstUser = Number(countUsers[0]?.count ?? 0) <= 1;
+
+  if (user.role !== undefined) {
+    values.role = user.role;
+    updateSet.role = user.role;
+  } else if (user.openId === ENV.ownerOpenId || isFirstUser) {
+    values.role = "admin";
+    updateSet.role = "admin";
   }
 
   await db.insert(users).values(values).onDuplicateKeyUpdate({ set: updateSet });
@@ -56,17 +64,24 @@ export async function getUserByOpenId(openId: string) {
   return result[0];
 }
 
+export async function makeUserAdmin(openId: string) {
+  const db = await getDb();
+  if (!db) return;
+  await db.update(users).set({ role: "admin" }).where(eq(users.openId, openId));
+}
+
 export async function listCategories() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(categories).where(eq(categories.isActive, true)).orderBy(asc(categories.sortOrder), asc(categories.name));
 }
 
-export async function listProducts(options?: { status?: "draft" | "published" | "archived"; search?: string }) {
+export async function listProducts(options?: { status?: "draft" | "published" | "archived"; search?: string; categoryId?: number | null }) {
   const db = await getDb();
   if (!db) return [];
   const filters = [];
   if (options?.status) filters.push(eq(products.publicationStatus, options.status));
+  if (options?.categoryId) filters.push(eq(products.categoryId, options.categoryId));
   if (options?.search) filters.push(like(products.name, `%${options.search}%`));
   return db.select().from(products).where(filters.length ? and(...filters) : undefined).orderBy(desc(products.isFeatured), desc(products.updatedAt));
 }
