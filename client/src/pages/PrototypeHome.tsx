@@ -621,11 +621,8 @@ export default function PrototypeHome() {
         </div>
       </section>
 
-      {/* 9. MANIFIESTO DE MARCA */}
-      <section id="manifiesto" style={{ background: "#252422", color: "#f4f0e8", padding: "100px 8vw", display: "grid", gridTemplateColumns: "1fr 2fr", gap: "50px", alignItems: "center" }}>
-        <div style={{ font: "400 90px 'Bebas Neue'", color: "#ff2a1a", lineHeight: "0.8" }}>
-          IDENTIDAD<br />LB
-        </div>
+      {/* 9. MANIFIESTO DE MARCA, composición de una sola columna */}
+      <section id="manifiesto" style={{ background: "#252422", color: "#f4f0e8", padding: "100px 8vw", display: "grid", gridTemplateColumns: "1fr", gap: "50px", alignItems: "center" }}>
         <div>
           <p className="hero-eyebrow" style={{ color: "#aaa59d" }}>NO HACEMOS ROPA. HACEMOS SEÑALES.</p>
           <h2 style={{ font: "400 clamp(50px, 6vw, 84px)/0.85 'Bebas Neue'", margin: "0 0 20px" }}>
